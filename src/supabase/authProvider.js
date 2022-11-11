@@ -34,7 +34,9 @@ export const supabaseAuthProvider = (
 		return undefined;
 	},
 	async setPassword({ password }) {
-		const { error } = await client.auth.updateUser({password});
+		const { data } = await client.auth.getUser();
+		const user_metadata = { ...data.user.user_metadata, has_set_password: false };
+		const { error } = await client.auth.updateUser({ password, data: user_metadata });
 
 		if (error) {
 			throw error;
