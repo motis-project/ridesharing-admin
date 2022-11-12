@@ -11,11 +11,12 @@ export const useRedirectToSetPassword = () => {
 
     useEffect(() => {
         supabase.auth.onAuthStateChange(async (event, session) => {
-            if (event === 'SIGNED_IN') {
-                const hasSetPassword = session.user.user_metadata.has_set_password;
-                if (!hasSetPassword) {
-                    navigate('/set-password');
-                }
+            console.log('onAuthStateChange', event, session);
+            const firstLogin = event === 'SIGNED_IN' && !session.user.user_metadata.has_set_password;
+            const passwordRecovery = event === 'PASSWORD_RECOVERY';
+
+            if(firstLogin || passwordRecovery) {
+                navigate('/set-password');
             }
         });
     }, [navigate]);
