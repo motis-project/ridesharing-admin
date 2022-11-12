@@ -1,10 +1,10 @@
 import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource } from 'react-admin';
 import { dataProvider } from './supabase/dataProvider';
 import { authProvider } from './supabase/authProvider';
-import { LoginPage } from './LoginPage';
+import { LoginPage } from './auth/LoginPage';
 import './App.css';
 import { Route } from 'react-router-dom';
-import { SetPasswordPage } from './SetPasswordPage';
+import { SetPasswordPage } from './auth/SetPasswordPage';
 import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
 
