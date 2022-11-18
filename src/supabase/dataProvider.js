@@ -196,9 +196,9 @@ const getResourceOptions = (
 };
 
 const resources = {
-    users: {
-      fields: ['id', 'name'],
-      fullTextSearchFields: ['name'],
+    profiles: {
+      fields: ['id', 'username', 'email'],
+      fullTextSearchFields: ['username', 'email'],
     },
   }
   

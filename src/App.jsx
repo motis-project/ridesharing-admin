@@ -19,7 +19,7 @@ function App() {
     <CustomRoutes noLayout>
       <Route path="/set-password" element={<SetPasswordPage/>} />
     </CustomRoutes>
-    <Resource name="users" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="profiles" list={ListGuesser} edit={EditGuesser}/>
   </Admin>
 }
 
