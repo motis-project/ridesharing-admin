@@ -27,6 +27,7 @@ const supabaseDataProvider = (
 ) => ({
     getList: async (resource, params) => {
         const resourceOptions = getResourceOptions(resource);
+        console.log(resourceOptions);
         return getList({ client, resource, resourceOptions, params });
     },
     getOne: async (resource, { id }) => {
@@ -197,8 +198,32 @@ const getResourceOptions = (
 
 const resources = {
     profiles: {
-      fields: ['id', 'username', 'email'],
-      fullTextSearchFields: ['username', 'email'],
+        fields: ['id', 'auth_id','created_at', 'username', 'email', 'description', 'surname', 'name', 'gender'],
+        fullTextSearchFields: ['name', 'username', 'email', 'description', 'surname', 'name'],
+    },
+    profile_features: {
+        fields: ['id', 'created_at', 'profile_id', 'feature'],
+        fullTextSearchFields: ['created_at', 'profile_id', 'feature'],
+    },
+    reviews: {
+        fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating'],
+        fullTextSearchFields: ['created_at', 'text', 'rating'],
+    },
+    drives: {
+        fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end', 'driver_id', 'cancelled', 'seats'],
+        fullTextSearchFields: ['created_at', 'start_time', 'end_time', 'start', 'end', 'cancelled', 'seats'],
+    },
+    rides: {
+        fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end', 'drive_id', 'status', 'seats'],
+        fullTextSearchFields: ['created_at', 'start_time', 'end_time', 'start', 'end', 'status', 'seats'],
+    },
+    chats: {
+        fields: ['id', 'created_at', 'driver_id', 'passenger_id'],
+        fullTextSearchFields: ['created_at'],
+    },
+    messages: {
+        fields: ['id', 'chat_id', 'created_at', 'content', 'user_id'],
+        fullTextSearchFields: ['created_at', 'content'],
     },
   }
   

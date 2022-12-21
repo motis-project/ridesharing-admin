@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import { SetPasswordPage } from './auth/SetPasswordPage';
 import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
+import { ProfileList, ProfileEdit } from './resources/profiles';
 
 function App() {
   return <Admin
@@ -19,7 +20,13 @@ function App() {
     <CustomRoutes noLayout>
       <Route path="/set-password" element={<SetPasswordPage/>} />
     </CustomRoutes>
-    <Resource name="profiles" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="profiles" list={ProfileList} edit={ProfileEdit}/>
+    <Resource name="drives" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="rides" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="profile_features" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="reviews" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="chats" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="messages" list={ListGuesser} edit={EditGuesser}/>
   </Admin>
 }
 
