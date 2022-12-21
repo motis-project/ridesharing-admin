@@ -6,7 +6,8 @@ import {
     Edit,
     SimpleForm,
     TextInput,
-    DateInput
+    DateInput,
+    Create
 } from "react-admin";
 const profileFilters = [
     <TextInput source="q" label="Search" alwaysOn />,
@@ -37,3 +38,17 @@ export const ProfileEdit = () => (
       </SimpleForm>
     </Edit>
 );
+
+export const ProfileCreate = () => (
+    <Create>
+      <SimpleForm>
+        <TextInput source="auth_id" />
+        <TextInput source="username" />
+        <TextInput source="email" />
+        <TextInput source="surname" />
+        <TextInput source="name" />
+        <TextInput source="gender" />
+        <TextInput source="description" />
+      </SimpleForm>
+    </Create>
+  );

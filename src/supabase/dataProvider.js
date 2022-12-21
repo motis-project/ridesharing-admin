@@ -202,7 +202,7 @@ const resources = {
         fullTextSearchFields: ['profile_id', 'feature'],
     },
     reviews: {
-        fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating'],
+        fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating', 'comfort_rating', 'safety_rating', 'reliability_rating', 'hospitality_rating'],
         fullTextSearchFields: ['text', 'rating'],
     },
     drives: {

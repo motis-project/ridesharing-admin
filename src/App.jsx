@@ -7,9 +7,14 @@ import { Route } from 'react-router-dom';
 import { SetPasswordPage } from './auth/SetPasswordPage';
 import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
-import { ProfileList, ProfileEdit } from './resources/profiles';
-import { DriveEdit, DriveList } from './resources/drives';
+import { ProfileList, ProfileEdit, ProfileCreate } from './resources/profiles';
+import { DriveEdit, DriveList, DriveCreate } from './resources/drives';
 import { Person } from '@mui/icons-material';
+import { RideCreate, RideList } from './resources/rides';
+import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList } from './resources/profile_features';
+import { ReviewCreate, ReviewEdit, ReviewList } from './resources/reviews';
+import { ChatCreate, ChatEdit, ChatList } from './resources/chats';
+import { MessageCreate, MessageEdit, MessageList } from './resources/messages';
 
 function App() {
   return <Admin
@@ -22,13 +27,13 @@ function App() {
     <CustomRoutes noLayout>
       <Route path="/set-password" element={<SetPasswordPage/>} />
     </CustomRoutes>
-    <Resource name="profiles" list={ProfileList} edit={ProfileEdit} icon={Person}/>
-    <Resource name="drives" list={DriveList} edit={DriveEdit}/>
-    <Resource name="rides" list={ListGuesser} edit={EditGuesser}/>
-    <Resource name="profile_features" list={ListGuesser} edit={EditGuesser}/>
-    <Resource name="reviews" list={ListGuesser} edit={EditGuesser}/>
-    <Resource name="chats" list={ListGuesser} edit={EditGuesser}/>
-    <Resource name="messages" list={ListGuesser} edit={EditGuesser}/>
+    <Resource name="profiles" list={ProfileList} edit={ProfileEdit} create={ProfileCreate} icon={Person} />
+    <Resource name="drives" list={DriveList} edit={DriveEdit} create={DriveCreate} />
+    <Resource name="rides" list={RideList} edit={RideCreate} create={RideCreate} />
+    <Resource name="profile_features" list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} />
+    <Resource name="reviews" list={ReviewList} edit={ReviewEdit} create={ReviewCreate} />
+    <Resource name="chats" list={ChatList} edit={ChatEdit} create={ChatCreate} />
+    <Resource name="messages" list={MessageList} edit={MessageEdit} create={MessageCreate} />
   </Admin>
 }
 

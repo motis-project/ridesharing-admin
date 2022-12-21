@@ -12,46 +12,47 @@ import {
     BooleanField,
     BooleanInput,
     NumberInput,
-    Create
+    Create,
+    NumberField
 } from "react-admin";
-const driveFilters = [
+const rideFilters = [
     <TextInput source="q" label="Search" alwaysOn />,
 ];
 
-export const DriveList = () => (
-  <List filters={driveFilters}>
+export const RideList = () => (
+  <List filters={rideFilters}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
-      <ReferenceField source="driver_id" reference="profiles" />
+      <ReferenceField source="drive_id" reference="drives" />
       <DateField source="start_time" />
       <TextField source="start" />
       <DateField source="end_time" />
       <TextField source="end" />
-      <BooleanField source="cancelled" />
+      <NumberField source="status" />
     </Datagrid>
   </List>
 );
 
-export const DriveEdit = () => (
+export const RideEdit = () => (
     <Edit>
       <SimpleForm>
         <TextInput source="id" disabled />
         <DateInput source="created_at" disabled />
-        <ReferenceInput source="driver_id" reference="profiles" />
+        <ReferenceInput source="drive_id" reference="drives" />
         <DateInput source="start_time" />
         <TextInput source="start" />
         <DateInput source="end_time" />
         <TextInput source="end" />
-        <BooleanInput source="cancelled" />
+        <NumberInput source="status" />
         <NumberInput source="seats" min={1} max={10} />
       </SimpleForm>
     </Edit>
   );
 
-export const DriveCreate = () => (
+export const RideCreate = () => (
   <Create>
     <SimpleForm>
-    <ReferenceInput source="driver_id" reference="profiles" />
+    <ReferenceInput source="drive_id" reference="drives" />
         <DateInput source="start_time" />
         <TextInput source="start" />
         <DateInput source="end_time" />
