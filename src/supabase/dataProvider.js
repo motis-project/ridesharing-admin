@@ -27,7 +27,6 @@ const supabaseDataProvider = (
 ) => ({
     getList: async (resource, params) => {
         const resourceOptions = getResourceOptions(resource);
-        console.log(resourceOptions);
         return getList({ client, resource, resourceOptions, params });
     },
     getOne: async (resource, { id }) => {
@@ -67,7 +66,7 @@ const supabaseDataProvider = (
         };
         return getList({ client, resource, resourceOptions, params });
     },
-    create: async (resource, { params }) => {
+    create: async (resource, { data: params }) => {
         const resourceOptions = getResourceOptions(resource, resources);
         const { data, error } = await client
             .from(resourceOptions.table)
@@ -80,31 +79,30 @@ const supabaseDataProvider = (
 
         return { data };
     },
-    update: async (resource, { id, params }) => {
+    update: async (resource, { id, data }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
-            .update(params)
+            .update(data)
             .match({ id })
             .single();
 
         if (error) {
             throw error;
         }
-
-        return { data };
+        return { data: {id: id} };
     },
-    updateMany: async (resource, { ids, params }) => {
+    updateMany: async (resource, { ids, data }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
-            .update(params)
+            .update(data)
             .in('id', ids);
 
         if (error) {
             throw error;
         }
-        return { data };
+        return { data: ids };
     },
     delete: async (resource, { id }) => {
         const resourceOptions = getResourceOptions(resource);
@@ -122,16 +120,14 @@ const supabaseDataProvider = (
     },
     deleteMany: async (resource, { ids }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
             .delete()
             .in('id', ids); 
-
         if (error) {
             throw error;
         }
-
-        return { data };
+        return {data: ids };
     },
 });
 
@@ -203,27 +199,27 @@ const resources = {
     },
     profile_features: {
         fields: ['id', 'created_at', 'profile_id', 'feature'],
-        fullTextSearchFields: ['created_at', 'profile_id', 'feature'],
+        fullTextSearchFields: ['profile_id', 'feature'],
     },
     reviews: {
         fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating'],
-        fullTextSearchFields: ['created_at', 'text', 'rating'],
+        fullTextSearchFields: ['text', 'rating'],
     },
     drives: {
         fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end', 'driver_id', 'cancelled', 'seats'],
-        fullTextSearchFields: ['created_at', 'start_time', 'end_time', 'start', 'end', 'cancelled', 'seats'],
+        fullTextSearchFields: ['start_time', 'end_time', 'start', 'end', 'cancelled', 'seats'],
     },
     rides: {
         fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end', 'drive_id', 'status', 'seats'],
-        fullTextSearchFields: ['created_at', 'start_time', 'end_time', 'start', 'end', 'status', 'seats'],
+        fullTextSearchFields: ['start_time', 'end_time', 'start', 'end', 'status', 'seats'],
     },
     chats: {
         fields: ['id', 'created_at', 'driver_id', 'passenger_id'],
-        fullTextSearchFields: ['created_at'],
+        fullTextSearchFields: [],
     },
     messages: {
         fields: ['id', 'chat_id', 'created_at', 'content', 'user_id'],
-        fullTextSearchFields: ['created_at', 'content'],
+        fullTextSearchFields: ['content'],
     },
   }
   

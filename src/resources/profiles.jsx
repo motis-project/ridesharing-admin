@@ -8,12 +8,12 @@ import {
     TextInput,
     DateInput
 } from "react-admin";
-const postFilters = [
+const profileFilters = [
     <TextInput source="q" label="Search" alwaysOn />,
 ];
 
 export const ProfileList = () => (
-  <List filters={postFilters}>
+  <List filters={profileFilters}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="username" />
@@ -36,4 +36,4 @@ export const ProfileEdit = () => (
         <TextInput source="description" />
       </SimpleForm>
     </Edit>
-  );
+);
