@@ -8,57 +8,69 @@ import {
     DateField,
     ReferenceInput,
     TextInput,
-    DateInput,
-    BooleanField,
-    BooleanInput,
+    DateTimeInput,
     NumberInput,
     Create,
-    NumberField
+    SelectField,
+    SelectInput
 } from "react-admin";
+
 const rideFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
+  <TextInput source="q" label="Search" alwaysOn />,
+];
+
+const states = [
+  { id: 1, name: 'preview' },
+  { id: 2, name: 'pending' },
+  { id: 3, name: 'approved' },
+  { id: 4, name: 'rejected' },
+  { id: 5, name: 'cancelledByDriver' },
+  { id: 6, name: 'cancelledByRider' },
 ];
 
 export const RideList = () => (
   <List filters={rideFilters}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
+      <ReferenceField source="rider_id" reference="profiles" />
       <ReferenceField source="drive_id" reference="drives" />
-      <DateField source="start_time" />
+      <DateField source="start_time" showTime />
       <TextField source="start" />
-      <DateField source="end_time" />
+      <DateField source="end_time" showTime />
       <TextField source="end" />
-      <NumberField source="status" />
+      <SelectField source="status" choices={states} />
     </Datagrid>
   </List>
 );
 
 export const RideEdit = () => (
-    <Edit>
-      <SimpleForm>
-        <TextInput source="id" disabled />
-        <DateInput source="created_at" disabled />
-        <ReferenceInput source="drive_id" reference="drives" />
-        <DateInput source="start_time" />
-        <TextInput source="start" />
-        <DateInput source="end_time" />
-        <TextInput source="end" />
-        <NumberInput source="status" />
-        <NumberInput source="seats" min={1} max={10} />
-      </SimpleForm>
-    </Edit>
-  );
+  <Edit>
+    <SimpleForm>
+      <TextInput source="id" disabled />
+      <DateTimeInput source="created_at" disabled />
+      <ReferenceInput source="rider_id" reference="profiles" />
+      <ReferenceInput source="drive_id" reference="drives" />
+      <DateTimeInput source="start_time" />
+      <TextInput source="start" />
+      <DateTimeInput source="end_time" />
+      <TextInput source="end" />
+      <SelectInput source="status" choices={states} />
+      <NumberInput source="seats" min={1} max={10} />
+    </SimpleForm>
+  </Edit>
+);
 
 export const RideCreate = () => (
   <Create>
     <SimpleForm>
-    <ReferenceInput source="drive_id" reference="drives" />
-        <DateInput source="start_time" />
-        <TextInput source="start" />
-        <DateInput source="end_time" />
-        <TextInput source="end" />
-        <BooleanInput source="cancelled" />
-        <NumberInput source="seats" min={1} max={10} />
+      <ReferenceInput source="rider_id" reference="profiles" />
+      <ReferenceInput source="drive_id" reference="drives" />
+      <DateTimeInput source="start_time" />
+      <TextInput source="start" />
+      <DateTimeInput source="end_time" />
+      <TextInput source="end" />
+      <SelectInput source="status" choices={states} />
+      <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
   </Create>
-)
+);

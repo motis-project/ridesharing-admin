@@ -7,11 +7,12 @@ import {
     SimpleForm,
     ReferenceInput,
     TextInput,
-    DateInput,
+    DateTimeInput,
     Create
 } from "react-admin";
+
 const messageFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
+  <TextInput source="q" label="Search" alwaysOn />,
 ];
 
 export const MessageList = () => (
@@ -26,24 +27,23 @@ export const MessageList = () => (
 );
 
 export const MessageEdit = () => (
-    <Edit>
-      <SimpleForm>
-        <TextInput source="id" disabled />
-        <DateInput source="created_at" disabled />
-        <ReferenceInput source="chat_id" reference="chats" />
-        <ReferenceInput source="user_id" reference="profiles" />
-        <TextInput source="content" />
-      </SimpleForm>
-    </Edit>
-  );
+  <Edit>
+    <SimpleForm>
+      <TextInput source="id" disabled />
+      <DateTimeInput source="created_at" disabled />
+      <ReferenceInput source="chat_id" reference="chats" />
+      <ReferenceInput source="user_id" reference="profiles" />
+      <TextInput source="content" />
+    </SimpleForm>
+  </Edit>
+);
 
 export const MessageCreate = () => (
   <Create>
     <SimpleForm>
-    <ReferenceInput source="chat_id" reference="chats" />
-    <ReferenceInput source="user_id" reference="profiles" />
-    <TextInput source="content" />
-
+      <ReferenceInput source="chat_id" reference="chats" />
+      <ReferenceInput source="user_id" reference="profiles" />
+      <TextInput source="content" />
     </SimpleForm>
   </Create>
-)
+);

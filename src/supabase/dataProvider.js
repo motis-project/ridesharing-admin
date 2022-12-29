@@ -68,15 +68,14 @@ const supabaseDataProvider = (
     },
     create: async (resource, { data: params }) => {
         const resourceOptions = getResourceOptions(resource, resources);
-        const { data, error } = await client
+        const {data, error} = await client
             .from(resourceOptions.table)
             .insert(params)
+            .select()
             .single();
-
         if (error) {
             throw error;
         }
-
         return { data };
     },
     update: async (resource, { id, data }) => {
@@ -210,7 +209,7 @@ const resources = {
         fullTextSearchFields: ['start_time', 'end_time', 'start', 'end', 'cancelled', 'seats'],
     },
     rides: {
-        fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end', 'drive_id', 'status', 'seats'],
+        fields: ['id', 'created_at', 'start_time', 'end_time', 'start', 'end','rider_id', 'drive_id', 'status', 'seats'],
         fullTextSearchFields: ['start_time', 'end_time', 'start', 'end', 'status', 'seats'],
     },
     chats: {
