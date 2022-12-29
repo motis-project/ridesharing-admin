@@ -9,7 +9,7 @@ import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
 import { ProfileList, ProfileEdit, ProfileCreate } from './resources/profiles';
 import { DriveEdit, DriveList, DriveCreate } from './resources/drives';
-import { Chair, Chat, DirectionsCar, Group, Message, Reviews } from '@mui/icons-material';
+import { Chair, Chat, DirectionsCar, Group, Message, Reviews, Rule } from '@mui/icons-material';
 import { RideCreate, RideEdit, RideList } from './resources/rides';
 import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList } from './resources/profile_features';
 import { ReviewCreate, ReviewEdit, ReviewList } from './resources/reviews';
@@ -30,7 +30,7 @@ function App() {
     <Resource name="profiles" list={ProfileList} edit={ProfileEdit} create={ProfileCreate} icon={Group} />
     <Resource name="drives" list={DriveList} edit={DriveEdit} create={DriveCreate} icon={DirectionsCar} />
     <Resource name="rides" list={RideList} edit={RideEdit} create={RideCreate} icon={Chair} />
-    <Resource name="profile_features" list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} />
+    <Resource name="profile_features" list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} icon={Rule} />
     <Resource name="reviews" list={ReviewList} edit={ReviewEdit} create={ReviewCreate} icon={Reviews} />
     <Resource name="chats" list={ChatList} edit={ChatEdit} create={ChatCreate} icon={Chat} />
     <Resource name="messages" list={MessageList} edit={MessageEdit} create={MessageCreate} icon={Message} />
