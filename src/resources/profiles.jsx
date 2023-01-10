@@ -2,13 +2,17 @@ import {
     List, 
     TextField, 
     EmailField,
+    DateField,
     Datagrid,
     Edit,
     SimpleForm,
     TextInput,
     DateTimeInput,
     RadioButtonGroupInput,
-    Create
+    SelectField,
+    Create,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const profileFilters = [
@@ -16,19 +20,35 @@ const profileFilters = [
 ];
 
 const gender = [
-  { id: 1, name: "male" },
-  { id: 2, name: "female" },
-  { id: 3, name: "divers" },
+  { id: 0, name: "male" },
+  { id: 1, name: "female" },
+  { id: 2, name: "divers" },
 ];
 
 export const ProfileList = () => (
   <List filters={profileFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <TextField source="username" />
       <EmailField source="email" />
     </Datagrid>
   </List>
+);
+
+export const ProfileShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id"  />
+      <TextField source="auth_id"  />
+      <DateField source="created_at" showTime />
+      <TextField source="username" />
+      <TextField source="email" />
+      <TextField source="surname" />
+      <TextField source="name" />
+      <SelectField source="gender" choices={gender} />
+      <TextField source="description" />
+    </SimpleShowLayout>
+  </Show>
 );
 
 export const ProfileEdit = () => (

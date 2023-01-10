@@ -2,13 +2,16 @@ import {
     List, 
     ReferenceField,
     TextField, 
+    DateField,
     Datagrid,
     Edit,
     SimpleForm,
     ReferenceInput,
     TextInput,
     Create,
-    DateTimeInput
+    DateTimeInput,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const chatFilters = [
@@ -17,12 +20,23 @@ const chatFilters = [
 
 export const ChatList = () => (
   <List filters={chatFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="driver_id" reference="profiles" />
       <ReferenceField source="rider_id" reference="profiles" />
     </Datagrid>
   </List>
+);
+
+export const ChatShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="driver_id" reference="profiles" />
+      <ReferenceField source="rider_id" reference="profiles" />
+    </SimpleShowLayout>
+  </Show>
 );
 
 export const ChatEdit = () => (

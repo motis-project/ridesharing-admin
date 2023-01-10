@@ -7,14 +7,15 @@ import { Route } from 'react-router-dom';
 import { SetPasswordPage } from './auth/SetPasswordPage';
 import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
-import { ProfileList, ProfileEdit, ProfileCreate } from './resources/profiles';
-import { DriveEdit, DriveList, DriveCreate } from './resources/drives';
-import { Chair, Chat, DirectionsCar, Group, Message, Reviews, Rule } from '@mui/icons-material';
-import { RideCreate, RideEdit, RideList } from './resources/rides';
-import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList } from './resources/profile_features';
-import { ReviewCreate, ReviewEdit, ReviewList } from './resources/reviews';
-import { ChatCreate, ChatEdit, ChatList } from './resources/chats';
-import { MessageCreate, MessageEdit, MessageList } from './resources/messages';
+import { ProfileList, ProfileEdit, ProfileCreate, ProfileShow } from './resources/profiles';
+import { DriveEdit, DriveList, DriveCreate, DriveShow } from './resources/drives';
+import { Chair, Chat, DirectionsCar, Group, Message, Reviews, Rule, Flag } from '@mui/icons-material';
+import { RideCreate, RideEdit, RideList, RideShow } from './resources/rides';
+import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFeatureShow } from './resources/profile_features';
+import { ReviewCreate, ReviewEdit, ReviewList, ReviewShow } from './resources/reviews';
+import { ChatCreate, ChatEdit, ChatList, ChatShow } from './resources/chats';
+import { MessageCreate, MessageEdit, MessageList, MessageShow } from './resources/messages';
+import { ReportCreate, ReportEdit, ReportList, ReportShow } from './resources/reports';
 
 function App() {
   return <Admin
@@ -27,13 +28,14 @@ function App() {
     <CustomRoutes noLayout>
       <Route path="/set-password" element={<SetPasswordPage/>} />
     </CustomRoutes>
-    <Resource name="profiles" list={ProfileList} edit={ProfileEdit} create={ProfileCreate} icon={Group} />
-    <Resource name="drives" list={DriveList} edit={DriveEdit} create={DriveCreate} icon={DirectionsCar} />
-    <Resource name="rides" list={RideList} edit={RideEdit} create={RideCreate} icon={Chair} />
-    <Resource name="profile_features" list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} icon={Rule} />
-    <Resource name="reviews" list={ReviewList} edit={ReviewEdit} create={ReviewCreate} icon={Reviews} />
-    <Resource name="chats" list={ChatList} edit={ChatEdit} create={ChatCreate} icon={Chat} />
-    <Resource name="messages" list={MessageList} edit={MessageEdit} create={MessageCreate} icon={Message} />
+    <Resource name="profiles" list={ProfileList} show={ProfileShow} edit={ProfileEdit} create={ProfileCreate} icon={Group} recordRepresentation={(record) => `${record.username}`} />
+    <Resource name="drives" list={DriveList} show={DriveShow} edit={DriveEdit} create={DriveCreate} icon={DirectionsCar} />
+    <Resource name="rides" list={RideList} show={RideShow} edit={RideEdit} create={RideCreate} icon={Chair} />
+    <Resource name="profile_features" show={ProfileFeatureShow} list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} icon={Rule} />
+    <Resource name="reviews" list={ReviewList} show={ReviewShow} edit={ReviewEdit} create={ReviewCreate} icon={Reviews} />
+    <Resource name="chats" list={ChatList} show={ChatShow} edit={ChatEdit} create={ChatCreate} icon={Chat} />
+    <Resource name="messages" list={MessageList} show={MessageShow} edit={MessageEdit} create={MessageCreate} icon={Message} />
+    <Resource name="reports" list={ReportList} show={ReportShow} edit={ReportEdit} create={ReportCreate} icon={Flag} />
   </Admin>
 }
 

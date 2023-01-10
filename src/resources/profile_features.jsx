@@ -2,6 +2,7 @@ import {
     List, 
     ReferenceField,
     TextField, 
+    DateField,
     Datagrid,
     Edit,
     SimpleForm,
@@ -10,7 +11,9 @@ import {
     DateTimeInput,
     Create,
     SelectField,
-    SelectInput
+    SelectInput,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const profileFeatureFilters = [
@@ -18,31 +21,41 @@ const profileFeatureFilters = [
 ];
 
 const features = [
-  { id: 1, name: "noSmoking" },
-  { id: 2, name: "smoking" },
-  { id: 3, name: "noVaping" },
-  { id: 4, name: "vaping" },
-  { id: 5, name: "noPetsAllowed" },
-  { id: 6, name: "petsAllowed" },
-  { id: 7, name: "noChildrenAllowed" },
-  { id: 8, name: "childrenAllowed" },
-  { id: 9, name: "talkative" },
-  { id: 10, name: "music" },
-  { id: 11, name: "quiet" },
-  { id: 12, name: "luxury" },
-  { id: 13, name: "speedyDrivingStyle" },
-  { id: 14, name: "relaxedDrivingStyle" },
-  { id: 15, name: "requires3G" },
+  { id: 0, name: "noSmoking" },
+  { id: 1, name: "smoking" },
+  { id: 2, name: "noVaping" },
+  { id: 3, name: "vaping" },
+  { id: 4, name: "noPetsAllowed" },
+  { id: 5, name: "petsAllowed" },
+  { id: 6, name: "noChildrenAllowed" },
+  { id: 7, name: "childrenAllowed" },
+  { id: 8, name: "talkative" },
+  { id: 9, name: "music" },
+  { id: 10, name: "quiet" },
+  { id: 11, name: "speedyDrivingStyle" },
+  { id: 12, name: "relaxedDrivingStyle" },
+  { id: 13, name: "requires3G" },
 ];
 
 export const ProfileFeatureList = () => (
   <List filters={profileFeatureFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="profile_id" reference="profiles" />
       <SelectField source="feature" choices={features} />
     </Datagrid>
   </List>
+);
+
+export const ProfileFeatureShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="profile_id" reference="profiles" />
+      <SelectField source="feature" choices={features} />
+    </SimpleShowLayout>
+  </Show>
 );
 
 export const ProfileFeatureEdit = () => (

@@ -2,6 +2,7 @@ import {
     List, 
     ReferenceField,
     TextField, 
+    NumberField,
     Datagrid,
     Edit,
     SimpleForm,
@@ -12,7 +13,9 @@ import {
     BooleanInput,
     NumberInput,
     Create,
-    DateTimeInput
+    DateTimeInput,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const driveFilters = [
@@ -21,7 +24,7 @@ const driveFilters = [
 
 export const DriveList = () => (
   <List filters={driveFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="driver_id" reference="profiles" />
       <DateField source="start_time" showTime />
@@ -33,8 +36,24 @@ export const DriveList = () => (
   </List>
 );
 
+export const DriveShow = () => (
+  <Show title={'Drive'}>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="driver_id" reference="profiles" />
+      <DateField source="start_time" showTime />
+      <TextField source="start" />
+      <DateField source="end_time" showTime />
+      <TextField source="end" />
+      <BooleanField source="cancelled" />
+      <NumberField source="seats" min={1} max={10} />
+    </SimpleShowLayout>
+  </Show>
+);
+
 export const DriveEdit = () => (
-  <Edit>
+  <Edit title={'Drive'}>
     <SimpleForm>
       <TextInput source="id" disabled />
       <DateTimeInput source="created_at" disabled />
@@ -50,7 +69,7 @@ export const DriveEdit = () => (
 );
 
 export const DriveCreate = () => (
-  <Create>
+  <Create title={'Drive'}>
     <SimpleForm>
       <ReferenceInput source="driver_id" reference="profiles" />
       <DateTimeInput source="start_time" />

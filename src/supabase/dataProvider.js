@@ -220,6 +220,10 @@ const resources = {
         fields: ['id', 'chat_id', 'created_at', 'content', 'user_id'],
         fullTextSearchFields: ['content'],
     },
+    reports: {
+        fields: ['id', 'created_at', 'offender_id', 'reporter_id','category', 'text'],
+        fullTextSearchFields: ['category', 'text'],
+    }
   }
   
 export const dataProvider = supabaseDataProvider(supabase);

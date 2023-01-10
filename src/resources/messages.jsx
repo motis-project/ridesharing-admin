@@ -2,13 +2,16 @@ import {
     List, 
     ReferenceField,
     TextField, 
+    DateField,
     Datagrid,
     Edit,
     SimpleForm,
     ReferenceInput,
     TextInput,
     DateTimeInput,
-    Create
+    Create,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const messageFilters = [
@@ -17,13 +20,25 @@ const messageFilters = [
 
 export const MessageList = () => (
   <List filters={messageFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="chat_id" reference="chats" />
       <ReferenceField source="user_id" reference="profiles" />
       <TextField source="content" />
     </Datagrid>
   </List>
+);
+
+export const MessageShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="chat_id" reference="chats" />
+      <ReferenceField source="user_id" reference="profiles" />
+      <TextField source="content" />
+    </SimpleShowLayout>
+  </Show>
 );
 
 export const MessageEdit = () => (

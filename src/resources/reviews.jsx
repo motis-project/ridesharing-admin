@@ -7,10 +7,13 @@ import {
     SimpleForm,
     ReferenceInput,
     TextInput,
+    DateField,
     DateTimeInput,
     Create,
     NumberField,
-    NumberInput
+    NumberInput,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const reviewFilters = [
@@ -19,14 +22,34 @@ const reviewFilters = [
 
 export const ReviewList = () => (
   <List filters={reviewFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="writer_id" reference="profiles" />
       <ReferenceField source="receiver_id" reference="profiles" />
       <NumberField source="rating" min={1} max={5}/>
+      <TextField source="text" />
     </Datagrid>
   </List>
 );
+
+export const ReviewShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="writer_id" reference="profiles" />
+      <ReferenceField source="receiver_id" reference="profiles" />
+      <NumberField source="rating" min={1} max={5}/>
+      <NumberField source="comfort_rating" min={1} max={5}/>
+      <NumberField source="safety_rating" min={1} max={5}/>
+      <NumberField source="reliability_rating" min={1} max={5}/>
+      <NumberField source="hospitality_rating" min={1} max={5}/>
+      <TextField source="text" />
+    </SimpleShowLayout>
+  </Show>
+);
+
+
 
 export const ReviewEdit = () => (
   <Edit>
@@ -40,6 +63,7 @@ export const ReviewEdit = () => (
       <NumberInput source="safety_rating" min={1} max={5}/>
       <NumberInput source="reliability_rating" min={1} max={5}/>
       <NumberInput source="hospitality_rating" min={1} max={5}/>
+      <TextInput source="text" />
     </SimpleForm>
   </Edit>
 );
@@ -54,6 +78,7 @@ export const ReviewCreate = () => (
       <NumberInput source="safety_rating" min={1} max={5}/>
       <NumberInput source="reliability_rating" min={1} max={5}/>
       <NumberInput source="hospitality_rating" min={1} max={5}/>
+      <TextInput source="text" />
     </SimpleForm>
   </Create>
 );

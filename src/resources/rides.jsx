@@ -6,13 +6,16 @@ import {
     Edit,
     SimpleForm,
     DateField,
+    NumberField,
     ReferenceInput,
     TextInput,
     DateTimeInput,
     NumberInput,
     Create,
     SelectField,
-    SelectInput
+    SelectInput,
+    Show,
+    SimpleShowLayout
 } from "react-admin";
 
 const rideFilters = [
@@ -20,17 +23,17 @@ const rideFilters = [
 ];
 
 const states = [
-  { id: 1, name: 'preview' },
-  { id: 2, name: 'pending' },
-  { id: 3, name: 'approved' },
-  { id: 4, name: 'rejected' },
-  { id: 5, name: 'cancelledByDriver' },
-  { id: 6, name: 'cancelledByRider' },
+  { id: 0, name: 'preview' },
+  { id: 1, name: 'pending' },
+  { id: 2, name: 'approved' },
+  { id: 3, name: 'rejected' },
+  { id: 4, name: 'cancelledByDriver' },
+  { id: 5, name: 'cancelledByRider' },
 ];
 
 export const RideList = () => (
   <List filters={rideFilters}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="rider_id" reference="profiles" />
       <ReferenceField source="drive_id" reference="drives" />
@@ -41,6 +44,22 @@ export const RideList = () => (
       <SelectField source="status" choices={states} />
     </Datagrid>
   </List>
+);
+export const RideShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <DateField source="created_at" showTime />
+      <ReferenceField source="rider_id" reference="profiles" />
+      <ReferenceField source="drive_id" reference="drives" />
+      <DateField source="start_time" showTime />
+      <TextField source="start" />
+      <DateField source="end_time" showTime />
+      <TextField source="end" />
+      <SelectField source="status" choices={states} />
+      <NumberField source="seats" min={1} max={10} />
+    </SimpleShowLayout>
+  </Show>
 );
 
 export const RideEdit = () => (
