@@ -34,7 +34,8 @@ const features = [
   { id: 10, name: "quiet" },
   { id: 11, name: "speedyDrivingStyle" },
   { id: 12, name: "relaxedDrivingStyle" },
-  { id: 13, name: "requires3G" },
+  { id: 13, name: "accessible" },
+  { id: 14, name: "requires3G" },
 ];
 
 export const ProfileFeatureList = () => (
