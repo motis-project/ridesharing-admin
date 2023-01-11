@@ -10,6 +10,7 @@ import {
     DateTimeInput,
     RadioButtonGroupInput,
     SelectField,
+    FunctionField,
     Create,
     Show,
     SimpleShowLayout
@@ -23,6 +24,7 @@ const gender = [
   { id: 0, name: "male" },
   { id: 1, name: "female" },
   { id: 2, name: "divers" },
+  { id: null, name: "no gender" },
 ];
 
 export const ProfileList = () => (
@@ -43,8 +45,7 @@ export const ProfileShow = () => (
       <DateField source="created_at" showTime />
       <TextField source="username" />
       <TextField source="email" />
-      <TextField source="surname" />
-      <TextField source="name" />
+      <FunctionField label="Name" render={record => `${record.surname} ${record.name}`} />;
       <SelectField source="gender" choices={gender} />
       <TextField source="description" />
     </SimpleShowLayout>

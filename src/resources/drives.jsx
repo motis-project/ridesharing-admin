@@ -27,7 +27,7 @@ export const DriveList = () => (
   <List filters={driveFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="driver_id" reference="profiles" />
+      <ReferenceField source="driver_id" reference="profiles" link="show" />
       <TextField source="start" />
       <DateField source="start_time" showTime />
       <TextField source="end" />
@@ -42,7 +42,7 @@ export const DriveShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="driver_id" reference="profiles" />
+      <ReferenceField source="driver_id" reference="profiles" link="show" />
       <TextField source="start" />
       <NumberField source="start_lat" />
       <NumberField source="start_lng" />

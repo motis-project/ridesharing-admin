@@ -33,9 +33,9 @@ export const ReportList = () => (
   <List filters={reportFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="offender_id" reference="profiles" />
-      <ReferenceField source="reporter_id" reference="profiles" />
-      <SelectField source="category" choices= {categorys} />
+      <ReferenceField source="offender_id" reference="profiles" link="show" />
+      <ReferenceField source="reporter_id" reference="profiles" link="show" />
+      <SelectField source="category" choices={categorys} />
       <TextField source="text" />
     </Datagrid>
   </List>
@@ -46,8 +46,8 @@ export const ReportShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="offender_id" reference="profiles" />
-      <ReferenceField source="reporter_id" reference="profiles" />
+      <ReferenceField source="offender_id" reference="profiles" link="show" />
+      <ReferenceField source="reporter_id" reference="profiles" link="show" />
       <SelectField source="category" choices={categorys} />
       <TextField source="text" />
     </SimpleShowLayout>

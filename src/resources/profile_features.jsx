@@ -42,7 +42,7 @@ export const ProfileFeatureList = () => (
   <List filters={profileFeatureFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="profile_id" reference="profiles" />
+      <ReferenceField source="profile_id" reference="profiles" link="show" />
       <SelectField source="feature" choices={features} />
     </Datagrid>
   </List>
@@ -53,7 +53,7 @@ export const ProfileFeatureShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="profile_id" reference="profiles" />
+      <ReferenceField source="profile_id" reference="profiles" link="show" />
       <SelectField source="feature" choices={features} />
     </SimpleShowLayout>
   </Show>

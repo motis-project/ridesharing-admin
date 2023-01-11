@@ -37,8 +37,8 @@ export const RideList = () => (
   <List filters={rideFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="rider_id" reference="profiles" />
-      <ReferenceField source="drive_id" reference="drives" />
+      <ReferenceField source="rider_id" reference="profiles" link="show" />
+      <ReferenceField source="drive_id" reference="drives" link="show" />
       <TextField source="start" />
       <DateField source="start_time" showTime />
       <TextField source="end" />
@@ -52,8 +52,8 @@ export const RideShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="rider_id" reference="profiles" />
-      <ReferenceField source="drive_id" reference="drives" />
+      <ReferenceField source="rider_id" reference="profiles" link="show" />
+      <ReferenceField source="drive_id" reference="drives" link="show" />
       <TextField source="start" />
       <NumberField source="start_lat" />
       <NumberField source="start_lng" />

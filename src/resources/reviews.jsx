@@ -15,6 +15,7 @@ import {
     Show,
     SimpleShowLayout
 } from "react-admin";
+import { TruncatedTextField } from "./util/truncatedTextField";
 
 const reviewFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
@@ -24,10 +25,10 @@ export const ReviewList = () => (
   <List filters={reviewFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="writer_id" reference="profiles" />
-      <ReferenceField source="receiver_id" reference="profiles" />
+      <ReferenceField source="writer_id" reference="profiles" link="show" />
+      <ReferenceField source="receiver_id" reference="profiles" link="show" />
       <NumberField source="rating" min={1} max={5}/>
-      <TextField source="text" />
+      <TruncatedTextField source="text" />
     </Datagrid>
   </List>
 );
@@ -37,8 +38,8 @@ export const ReviewShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="writer_id" reference="profiles" />
-      <ReferenceField source="receiver_id" reference="profiles" />
+      <ReferenceField source="writer_id" reference="profiles" link="show" />
+      <ReferenceField source="receiver_id" reference="profiles" link="show" />
       <NumberField source="rating" min={1} max={5}/>
       <NumberField source="comfort_rating" min={1} max={5}/>
       <NumberField source="safety_rating" min={1} max={5}/>

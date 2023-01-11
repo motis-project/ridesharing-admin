@@ -22,8 +22,8 @@ export const MessageList = () => (
   <List filters={messageFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="chat_id" reference="chats" />
-      <ReferenceField source="user_id" reference="profiles" />
+      <ReferenceField source="chat_id" reference="chats" link="show" />
+      <ReferenceField source="user_id" reference="profiles" link="show" />
       <TextField source="content" />
     </Datagrid>
   </List>
@@ -34,8 +34,8 @@ export const MessageShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="chat_id" reference="chats" />
-      <ReferenceField source="user_id" reference="profiles" />
+      <ReferenceField source="chat_id" reference="chats" link="show" />
+      <ReferenceField source="user_id" reference="profiles" link="show" />
       <TextField source="content" />
     </SimpleShowLayout>
   </Show>
