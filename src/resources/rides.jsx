@@ -29,6 +29,7 @@ const states = [
   { id: 3, name: 'rejected' },
   { id: 4, name: 'cancelledByDriver' },
   { id: 5, name: 'cancelledByRider' },
+  { id: 6, name: 'withdrawnByRider' },
 ];
 
 export const RideList = () => (
