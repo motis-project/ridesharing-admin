@@ -1,9 +1,9 @@
 import { useRecordContext } from 'react-admin';
 
-export const TruncatedTextField = ({ record }) => {
-  const source = useRecordContext();
-    let str = source.text;
+export const TruncatedTextField = ({ source, length = 100 }) => {
+  const record = useRecordContext();
+    let str = record[source];
     return str ? (
-      <span>{str.length > 100 ?  str.slice(0,100) + "..." : str}</span>
+      <span>{str.length > length ?  str.slice(0,length) + "..." : str}</span>
     ) : null;
   };

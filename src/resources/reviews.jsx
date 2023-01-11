@@ -28,7 +28,7 @@ export const ReviewList = () => (
       <ReferenceField source="writer_id" reference="profiles" link="show" />
       <ReferenceField source="receiver_id" reference="profiles" link="show" />
       <NumberField source="rating" min={1} max={5}/>
-      <TruncatedTextField source="text" />
+      <TruncatedTextField source="text" length={200}/>
     </Datagrid>
   </List>
 );
