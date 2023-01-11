@@ -63,7 +63,7 @@ export const RideShow = () => (
       <NumberField source="end_lng" />
       <DateField source="end_time" showTime />
       <SelectField source="status" choices={states} />
-      <NumberField source="seats" min={1} max={10} />
+      <NumberField source="seats" />
     </SimpleShowLayout>
   </Show>
 );

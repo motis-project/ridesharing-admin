@@ -52,7 +52,7 @@ export const DriveShow = () => (
       <NumberField source="end_lng" />
       <DateField source="end_time" showTime />
       <BooleanField source="cancelled" />
-      <NumberField source="seats" min={1} max={10} />
+      <NumberField source="seats" />
     </SimpleShowLayout>
   </Show>
 );

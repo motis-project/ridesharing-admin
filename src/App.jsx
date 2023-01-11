@@ -11,7 +11,7 @@ import { ProfileList, ProfileEdit, ProfileCreate, ProfileShow } from './resource
 import { DriveEdit, DriveList, DriveCreate, DriveShow } from './resources/drives';
 import { Chair, DirectionsCar, Group, Message, Reviews, Rule, Flag, Forum } from '@mui/icons-material';
 import { RideCreate, RideEdit, RideList, RideShow } from './resources/rides';
-import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFeatureShow } from './resources/profile_features';
+import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFeatureShow } from './resources/profileFeatures';
 import { ReviewCreate, ReviewEdit, ReviewList, ReviewShow } from './resources/reviews';
 import { ChatCreate, ChatEdit, ChatList, ChatShow } from './resources/chats';
 import { MessageCreate, MessageEdit, MessageList, MessageShow } from './resources/messages';
