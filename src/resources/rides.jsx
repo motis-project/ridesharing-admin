@@ -17,6 +17,7 @@ import {
     Show,
     SimpleShowLayout
 } from "react-admin";
+import { PositionInput } from "./util/position";
 
 const rideFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
@@ -38,10 +39,10 @@ export const RideList = () => (
       <TextField source="id" />
       <ReferenceField source="rider_id" reference="profiles" />
       <ReferenceField source="drive_id" reference="drives" />
-      <DateField source="start_time" showTime />
       <TextField source="start" />
-      <DateField source="end_time" showTime />
+      <DateField source="start_time" showTime />
       <TextField source="end" />
+      <DateField source="end_time" showTime />
       <SelectField source="status" choices={states} />
     </Datagrid>
   </List>
@@ -53,10 +54,14 @@ export const RideShow = () => (
       <DateField source="created_at" showTime />
       <ReferenceField source="rider_id" reference="profiles" />
       <ReferenceField source="drive_id" reference="drives" />
-      <DateField source="start_time" showTime />
       <TextField source="start" />
-      <DateField source="end_time" showTime />
+      <NumberField source="start_lat" />
+      <NumberField source="start_lng" />
+      <DateField source="start_time" showTime />
       <TextField source="end" />
+      <NumberField source="end_lat" />
+      <NumberField source="end_lng" />
+      <DateField source="end_time" showTime />
       <SelectField source="status" choices={states} />
       <NumberField source="seats" min={1} max={10} />
     </SimpleShowLayout>
@@ -70,10 +75,8 @@ export const RideEdit = () => (
       <DateTimeInput source="created_at" disabled />
       <ReferenceInput source="rider_id" reference="profiles" />
       <ReferenceInput source="drive_id" reference="drives" />
-      <DateTimeInput source="start_time" />
-      <TextInput source="start" />
-      <DateTimeInput source="end_time" />
-      <TextInput source="end" />
+      <PositionInput source="start" />
+      <PositionInput source="end" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
@@ -85,10 +88,8 @@ export const RideCreate = () => (
     <SimpleForm>
       <ReferenceInput source="rider_id" reference="profiles" />
       <ReferenceInput source="drive_id" reference="drives" />
-      <DateTimeInput source="start_time" />
-      <TextInput source="start" />
-      <DateTimeInput source="end_time" />
-      <TextInput source="end" />
+      <PositionInput source="start" />
+      <PositionInput source="end" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
