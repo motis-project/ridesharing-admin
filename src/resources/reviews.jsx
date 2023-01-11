@@ -27,7 +27,7 @@ export const ReviewList = () => (
       <TextField source="id" />
       <ReferenceField source="writer_id" reference="profiles" link="show" />
       <ReferenceField source="receiver_id" reference="profiles" link="show" />
-      <NumberField source="rating" min={1} max={5}/>
+      <NumberField source="rating" />
       <TruncatedTextField source="text" length={200}/>
     </Datagrid>
   </List>
@@ -40,11 +40,11 @@ export const ReviewShow = () => (
       <DateField source="created_at" showTime />
       <ReferenceField source="writer_id" reference="profiles" link="show" />
       <ReferenceField source="receiver_id" reference="profiles" link="show" />
-      <NumberField source="rating" min={1} max={5}/>
-      <NumberField source="comfort_rating" min={1} max={5}/>
-      <NumberField source="safety_rating" min={1} max={5}/>
-      <NumberField source="reliability_rating" min={1} max={5}/>
-      <NumberField source="hospitality_rating" min={1} max={5}/>
+      <NumberField source="rating" />
+      <NumberField source="comfort_rating" />
+      <NumberField source="safety_rating"/>
+      <NumberField source="reliability_rating" />
+      <NumberField source="hospitality_rating" />
       <TextField source="text" />
     </SimpleShowLayout>
   </Show>
