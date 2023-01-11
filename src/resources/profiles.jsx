@@ -24,7 +24,7 @@ const gender = [
   { id: 0, name: "male" },
   { id: 1, name: "female" },
   { id: 2, name: "divers" },
-  { id: null, name: "no gender" },
+  { id: null, name: "not specified" },
 ];
 
 export const ProfileList = () => (
