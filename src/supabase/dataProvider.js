@@ -205,19 +205,15 @@ const resources = {
         fullTextSearchFields: ['text', 'rating'],
     },
     drives: {
-        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'driver_id', 'cancelled', 'seats'],
-        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'cancelled', 'seats'],
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'driver_id', 'cancelled', 'seats', 'hide_in_list_view'],
+        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'seats'],
     },
     rides: {
-        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'status', 'seats'],
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'status', 'seats', 'hide_in_list_view'],
         fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'status', 'seats'],
     },
-    chats: {
-        fields: ['id', 'created_at', 'driver_id', 'passenger_id'],
-        fullTextSearchFields: [],
-    },
     messages: {
-        fields: ['id', 'chat_id', 'created_at', 'content', 'user_id'],
+        fields: ['id', 'ride_id', 'created_at', 'content', 'sender_id', 'read'],
         fullTextSearchFields: ['content'],
     },
     reports: {

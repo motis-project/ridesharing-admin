@@ -33,6 +33,7 @@ export const DriveList = () => (
       <TextField source="end" />
       <DateField source="end_time" showTime />
       <BooleanField source="cancelled" />
+      <BooleanField label="Soft delete" source="hide_in_list_view" />
     </Datagrid>
   </List>
 );
@@ -52,6 +53,7 @@ export const DriveShow = () => (
       <NumberField source="end_lng" />
       <DateField source="end_time" showTime />
       <BooleanField source="cancelled" />
+      <BooleanField label="Soft delete" source="hide_in_list_view" />
       <NumberField source="seats" />
     </SimpleShowLayout>
   </Show>
@@ -66,6 +68,7 @@ export const DriveEdit = () => (
       <PositionInput source="start" />
       <PositionInput source="end" />
       <BooleanInput source="cancelled" />
+      <BooleanInput label="Soft delete" source="hide_in_list_view" />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
   </Edit>
@@ -78,6 +81,7 @@ export const DriveCreate = () => (
       <PositionInput source="start" />
       <PositionInput source="end" />
       <BooleanInput source="cancelled" />
+      <BooleanInput label="Soft delete" source="hide_in_list_view" />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
   </Create>

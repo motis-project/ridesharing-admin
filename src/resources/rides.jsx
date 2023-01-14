@@ -7,6 +7,8 @@ import {
     SimpleForm,
     DateField,
     NumberField,
+    BooleanField,
+    BooleanInput,
     ReferenceInput,
     TextInput,
     DateTimeInput,
@@ -43,6 +45,7 @@ export const RideList = () => (
       <DateField source="start_time" showTime />
       <TextField source="end" />
       <DateField source="end_time" showTime />
+      <BooleanField label="Soft delete" source="hide_in_list_view" />
       <SelectField source="status" choices={states} />
     </Datagrid>
   </List>
@@ -63,6 +66,7 @@ export const RideShow = () => (
       <NumberField source="end_lng" />
       <DateField source="end_time" showTime />
       <SelectField source="status" choices={states} />
+      <BooleanField label="Soft delete" source="hide_in_list_view" />
       <NumberField source="seats" />
     </SimpleShowLayout>
   </Show>
@@ -79,6 +83,7 @@ export const RideEdit = () => (
       <PositionInput source="end" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
+      <BooleanInput label="Soft delete" source="hide_in_list_view" />
     </SimpleForm>
   </Edit>
 );
@@ -92,6 +97,7 @@ export const RideCreate = () => (
       <PositionInput source="end" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
+      <BooleanInput label="Soft delete" source="hide_in_list_view" />
     </SimpleForm>
   </Create>
 );
