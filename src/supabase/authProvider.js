@@ -26,11 +26,17 @@ export const supabaseAuthProvider = (
 	client,
 ) => ({
 	async login({ email, password }) {
-		const { error } = await client.auth.signInWithPassword({ email, password });
-
+		const { error, data } = await client.auth.signInWithPassword({ email, password });
+				
 		if (error) {
-				throw error;
+			throw error;
 		}
+
+		if (data.user.app_metadata.react_admin !== true) {
+			this.logout();
+			throw new Error("Not Authorized");
+		}
+
 		return undefined;
 	},
 	async setPassword({ password }) {
