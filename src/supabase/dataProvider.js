@@ -66,44 +66,42 @@ const supabaseDataProvider = (
         };
         return getList({ client, resource, resourceOptions, params });
     },
-    create: async (resource, { params }) => {
+    create: async (resource, { data: params }) => {
         const resourceOptions = getResourceOptions(resource, resources);
-        const { data, error } = await client
+        const {data, error} = await client
             .from(resourceOptions.table)
             .insert(params)
+            .select()
             .single();
-
         if (error) {
             throw error;
         }
-
         return { data };
     },
-    update: async (resource, { id, params }) => {
+    update: async (resource, { id, data }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
-            .update(params)
+            .update(data)
             .match({ id })
             .single();
 
         if (error) {
             throw error;
         }
-
-        return { data };
+        return { data: {id: id} };
     },
-    updateMany: async (resource, { ids, params }) => {
+    updateMany: async (resource, { ids, data }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
-            .update(params)
+            .update(data)
             .in('id', ids);
 
         if (error) {
             throw error;
         }
-        return { data };
+        return { data: ids };
     },
     delete: async (resource, { id }) => {
         const resourceOptions = getResourceOptions(resource);
@@ -121,16 +119,14 @@ const supabaseDataProvider = (
     },
     deleteMany: async (resource, { ids }) => {
         const resourceOptions = getResourceOptions(resource);
-        const { data, error } = await client
+        const { error } = await client
             .from(resourceOptions.table)
             .delete()
             .in('id', ids); 
-
         if (error) {
             throw error;
         }
-
-        return { data };
+        return {data: ids };
     },
 });
 
@@ -197,9 +193,33 @@ const getResourceOptions = (
 
 const resources = {
     profiles: {
-      fields: ['id', 'username', 'email'],
-      fullTextSearchFields: ['username', 'email'],
+        fields: ['id', 'auth_id','created_at', 'username', 'email', 'description', 'surname', 'name', 'gender'],
+        fullTextSearchFields: ['name', 'username', 'email', 'description', 'surname', 'name'],
     },
+    profile_features: {
+        fields: ['id', 'created_at', 'profile_id', 'feature'],
+        fullTextSearchFields: ['profile_id', 'feature'],
+    },
+    reviews: {
+        fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating', 'comfort_rating', 'safety_rating', 'reliability_rating', 'hospitality_rating'],
+        fullTextSearchFields: ['text', 'rating'],
+    },
+    drives: {
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'driver_id', 'cancelled', 'seats', 'hide_in_list_view'],
+        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'seats'],
+    },
+    rides: {
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'status', 'seats', 'hide_in_list_view'],
+        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'status', 'seats'],
+    },
+    messages: {
+        fields: ['id', 'ride_id', 'created_at', 'content', 'sender_id', 'read'],
+        fullTextSearchFields: ['content'],
+    },
+    reports: {
+        fields: ['id', 'created_at', 'offender_id', 'reporter_id','category', 'text'],
+        fullTextSearchFields: ['category', 'text'],
+    }
   }
   
 export const dataProvider = supabaseDataProvider(supabase);
