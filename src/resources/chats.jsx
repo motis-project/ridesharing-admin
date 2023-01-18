@@ -22,7 +22,7 @@ export const ChatList = () => (
   <List filters={chatFilters}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ReferenceField source="driver_id" reference="profiles" link="show" />
+      <ReferenceField source="drive_id" reference="drives" link="show" />
       <ReferenceField source="rider_id" reference="profiles" link="show" />
     </Datagrid>
   </List>
@@ -33,7 +33,7 @@ export const ChatShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="created_at" showTime />
-      <ReferenceField source="driver_id" reference="profiles" link="show" />
+      <ReferenceField source="drive_id" reference="drives" link="show" />
       <ReferenceField source="rider_id" reference="profiles" link="show" />
     </SimpleShowLayout>
   </Show>
@@ -44,7 +44,7 @@ export const ChatEdit = () => (
     <SimpleForm>
       <TextInput source="id" disabled />
       <DateTimeInput source="created_at" disabled />
-      <ReferenceInput source="driver_id" reference="profiles" />
+      <ReferenceInput source="drive_id" reference="drives" />
       <ReferenceInput source="rider_id" reference="profiles" />
     </SimpleForm>
   </Edit>
@@ -53,7 +53,7 @@ export const ChatEdit = () => (
 export const ChatCreate = () => (
   <Create>
     <SimpleForm>
-      <ReferenceInput source="driver_id" reference="profiles" />
+      <ReferenceInput source="drive_id" reference="drives" />
       <ReferenceInput source="rider_id" reference="profiles" />
     </SimpleForm>
   </Create>

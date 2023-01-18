@@ -212,8 +212,11 @@ const resources = {
         fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'status', 'seats', 'hide_in_list_view'],
         fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'status', 'seats'],
     },
+    chats: {
+        fields: ['id', 'created_at', 'drive_id', 'rider_id'],
+    },
     messages: {
-        fields: ['id', 'ride_id', 'created_at', 'content', 'sender_id', 'read'],
+        fields: ['id', 'created_at', 'chat_id', 'content', 'sender_id', 'read'],
         fullTextSearchFields: ['content'],
     },
     reports: {
