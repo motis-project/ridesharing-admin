@@ -32,7 +32,7 @@ export const supabaseAuthProvider = (
 			throw error;
 		}
 
-		if (data.user.app_metadata.admin !== true) {
+		if (data.user.app_metadata.admin !== true && data.user.app_metadata.react_admin !== true) {
 			this.logout();
 			throw new Error("Not Authorized");
 		}
