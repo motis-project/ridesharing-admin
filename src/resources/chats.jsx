@@ -23,7 +23,7 @@ export const ChatList = () => (
     <Datagrid rowClick="show">
       <TextField source="id" />
       <ReferenceField source="drive_id" reference="drives" link="show" />
-      <ReferenceField source="rider_id" reference="profiles" link="show" />
+      <ReferenceField source="ride_id" reference="rides" link="show" />
     </Datagrid>
   </List>
 );
@@ -34,7 +34,7 @@ export const ChatShow = () => (
       <TextField source="id" />
       <DateField source="created_at" showTime />
       <ReferenceField source="drive_id" reference="drives" link="show" />
-      <ReferenceField source="rider_id" reference="profiles" link="show" />
+      <ReferenceField source="ride_id" reference="rides" link="show" />
     </SimpleShowLayout>
   </Show>
 );
@@ -45,7 +45,7 @@ export const ChatEdit = () => (
       <TextInput source="id" disabled />
       <DateTimeInput source="created_at" disabled />
       <ReferenceInput source="drive_id" reference="drives" />
-      <ReferenceInput source="rider_id" reference="profiles" />
+      <ReferenceInput source="ride_id" reference="rides" />
     </SimpleForm>
   </Edit>
 );
@@ -54,7 +54,7 @@ export const ChatCreate = () => (
   <Create>
     <SimpleForm>
       <ReferenceInput source="drive_id" reference="drives" />
-      <ReferenceInput source="rider_id" reference="profiles" />
+      <ReferenceInput source="ride_id" reference="rides" />
     </SimpleForm>
   </Create>
 );
