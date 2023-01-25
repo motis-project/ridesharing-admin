@@ -41,6 +41,7 @@ export const RideList = () => (
       <TextField source="id" />
       <ReferenceField source="rider_id" reference="profiles" link="show" />
       <ReferenceField source="drive_id" reference="drives" link="show" />
+      <ReferenceField source="chat_id" reference="chats" link="show" />
       <TextField source="start" />
       <DateField source="start_time" showTime />
       <TextField source="end" />
@@ -57,6 +58,7 @@ export const RideShow = () => (
       <DateField source="created_at" showTime />
       <ReferenceField source="rider_id" reference="profiles" link="show" />
       <ReferenceField source="drive_id" reference="drives" link="show" />
+      <ReferenceField source="chat_id" reference="chats" link="show" />
       <TextField source="start" />
       <NumberField source="start_lat" />
       <NumberField source="start_lng" />

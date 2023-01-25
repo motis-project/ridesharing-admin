@@ -209,11 +209,11 @@ const resources = {
         fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'seats'],
     },
     rides: {
-        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'status', 'seats', 'hide_in_list_view'],
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'chat_id', 'status', 'seats', 'hide_in_list_view'],
         fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'status', 'seats'],
     },
     chats: {
-        fields: ['id', 'created_at', 'drive_id', 'ride_id'],
+        fields: ['id', 'created_at'],
     },
     messages: {
         fields: ['id', 'created_at', 'chat_id', 'content', 'sender_id', 'read'],

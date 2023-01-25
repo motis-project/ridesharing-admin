@@ -15,7 +15,7 @@ import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFe
 import { ReviewCreate, ReviewEdit, ReviewList, ReviewShow } from './resources/reviews';
 import { MessageCreate, MessageEdit, MessageList, MessageShow } from './resources/messages';
 import { ReportCreate, ReportEdit, ReportList, ReportShow } from './resources/reports';
-import { ChatCreate, ChatEdit, ChatList, ChatShow } from './resources/chats';
+import { ChatList, ChatShow } from './resources/chats';
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
     <Resource name="profile_features" show={ProfileFeatureShow} list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} icon={Rule} />
     <Resource name="reviews" list={ReviewList} show={ReviewShow} edit={ReviewEdit} create={ReviewCreate} icon={Reviews} />
     <Resource name="reports" list={ReportList} show={ReportShow} edit={ReportEdit} create={ReportCreate} icon={Flag} />
-    <Resource name="chats" list={ChatList} show={ChatShow} edit={ChatEdit} create={ChatCreate} icon={Forum} />
+    <Resource name="chats" list={ChatList} show={ChatShow} icon={Forum} />
     <Resource name="messages" list={MessageList} show={MessageShow} edit={MessageEdit} create={MessageCreate} icon={Message} />
   </Admin>
 }
