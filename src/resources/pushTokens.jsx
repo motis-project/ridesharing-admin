@@ -12,6 +12,8 @@ import {
     Create,
     Show,
     SimpleShowLayout,
+    BooleanField,
+    BooleanInput,
 } from "react-admin";
 
 const pushTokenFilters = [
@@ -24,6 +26,7 @@ export const PushTokenList = () => (
       <TextField source="id" />
       <ReferenceField source="user_id" reference="profiles" link="show" />
       <TextField source="token" />
+      <BooleanField source="disabled" />
     </Datagrid>
   </List>
 );
@@ -35,6 +38,7 @@ export const PushTokenShow = () => (
       <DateField source="created_at" showTime />
       <ReferenceField source="user_id" reference="profiles" link="show" />
       <TextField source="token" />
+      <BooleanField source="disabled" />
     </SimpleShowLayout>
   </Show>
 );
@@ -46,6 +50,7 @@ export const PushTokenEdit = () => (
       <DateTimeInput source="created_at" disabled />
       <ReferenceInput source="user_id" reference="profiles" />
       <TextInput source="token" />
+      <BooleanInput source="disabled" />
     </SimpleForm>
   </Edit>
 );
@@ -55,6 +60,7 @@ export const PushTokenCreate = () => (
     <SimpleForm>
       <ReferenceInput source="user_id" reference="profiles" />
       <TextInput source="token" />
+      <BooleanInput source="disabled" />
     </SimpleForm>
   </Create>
 );

@@ -224,7 +224,7 @@ const resources = {
         fullTextSearchFields: ['category', 'text'],
     },
     push_tokens: {
-        fields: ['id', 'created_at', 'user_id', 'token'],
+        fields: ['id', 'created_at', 'user_id', 'token', 'disabled'],
         fullTextSearchFields: ['token'],
     },
     notifications: {
