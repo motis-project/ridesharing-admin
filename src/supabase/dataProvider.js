@@ -31,18 +31,7 @@ const supabaseDataProvider = (
     },
     getOne: async (resource, { id }) => {
         const resourceOptions = getResourceOptions(resource);
-
-        const { data, error } = await client
-            .from(resourceOptions.table)
-            .select(resourceOptions.fields.join(', '))
-            .match({ id })
-            .single();
-
-        if (error) {
-            throw error;
-        } 
-
-        return { data }
+        return getOne({ client, resource, resourceOptions, id });
     },
     getMany: async (resource, { ids }) => {
         const resourceOptions = getResourceOptions(resource);
@@ -130,6 +119,32 @@ const supabaseDataProvider = (
     },
 });
 
+const getOne = async ({
+    client,
+    resource,
+    resourceOptions,
+    id,
+}) => {
+    const { data, error } = await client
+    .from(resourceOptions.table)
+    .select(resourceOptions.fields.join(', '))
+    .match({ id })
+    .single();
+
+    if (error) {
+        throw error;
+    } 
+    console.log(resource);
+    if(resource === 'profiles'){
+
+        const {data: blocked} = await client.rpc('is_blocked', {user_id: data['auth_id']});
+        console.log(blocked);
+        data['is_blocked'] = blocked;
+    }
+
+    return { data }
+};
+
 const getList = async ({
     client,
     resource,
@@ -171,6 +186,13 @@ const getList = async ({
 
     if (error) {
         throw error;
+    }
+
+    if(resource === 'profiles'){
+        for (let i = 0; i < data.length; i++) {
+            const {data: blocked} = await client.rpc('is_blocked', {user_id: data[i]['auth_id']});
+            data[i]['is_blocked'] = blocked;
+        }
     }
 
     return {
