@@ -134,11 +134,8 @@ const getOne = async ({
     if (error) {
         throw error;
     } 
-    console.log(resource);
     if(resource === 'profiles'){
-
         const {data: blocked} = await client.rpc('is_blocked', {user_id: data['auth_id']});
-        console.log(blocked);
         data['is_blocked'] = blocked;
     }
 
