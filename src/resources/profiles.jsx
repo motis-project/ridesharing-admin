@@ -48,7 +48,7 @@ const BlockUserButton = () => {
           <Confirm
               isOpen={open}
               title={userIsBlocked === true ? 'Unblock User' : 'Block User'}
-              content= {userIsBlocked === true ? 'Are you sure to unblock this user?' : 'Are you sure to block this user?'}
+              content= {userIsBlocked === true ? 'Are you sure you want to unblock this user?' : 'Are you sure you want to block this user?'}
               onConfirm={handleConfirm}
               onClose={handleDialogClose}
           />
