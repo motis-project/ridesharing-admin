@@ -37,7 +37,8 @@ const BlockUserButton = () => {
   const handleClick = () => setOpen(true);
   const handleDialogClose = () => setOpen(false);
   const handleConfirm = async () => {
-    await supabase.rpc(userIsBlocked === true ? 'unblock_user' : 'block_user', { user_id: record['auth_id'] })
+  const {error} = await supabase.rpc(userIsBlocked === true ? 'unblock_user' : 'block_user', { userid: record['auth_id'] })
+   if (error) console.log(error);
     refresh();
     setOpen(false);
   };
