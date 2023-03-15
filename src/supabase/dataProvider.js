@@ -222,7 +222,15 @@ const resources = {
     reports: {
         fields: ['id', 'created_at', 'offender_id', 'reporter_id','category', 'text'],
         fullTextSearchFields: ['category', 'text'],
+    },
+    push_tokens: {
+        fields: ['id', 'created_at', 'user_id', 'token', 'disabled'],
+        fullTextSearchFields: ['token'],
+    },
+    notifications: {
+        fields: ['id', 'created_at', 'receiver_id', 'title', 'body', 'deep_link'],
+        fullTextSearchFields: ['title', 'body', 'deep_link'],
     }
-  }
+}
   
 export const dataProvider = supabaseDataProvider(supabase);

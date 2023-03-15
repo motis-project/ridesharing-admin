@@ -9,13 +9,15 @@ import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
 import { ProfileList, ProfileEdit, ProfileCreate, ProfileShow } from './resources/profiles';
 import { DriveEdit, DriveList, DriveCreate, DriveShow } from './resources/drives';
-import { Chair, DirectionsCar, Group, Message, Reviews, Rule, Flag, Forum } from '@mui/icons-material';
+import { Chair, DirectionsCar, Group, Message, Reviews, Rule, Flag, Forum, Token, Notifications } from '@mui/icons-material';
 import { RideCreate, RideEdit, RideList, RideShow } from './resources/rides';
 import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFeatureShow } from './resources/profileFeatures';
 import { ReviewCreate, ReviewEdit, ReviewList, ReviewShow } from './resources/reviews';
 import { MessageCreate, MessageEdit, MessageList, MessageShow } from './resources/messages';
 import { ReportCreate, ReportEdit, ReportList, ReportShow } from './resources/reports';
 import { ChatList, ChatShow } from './resources/chats';
+import { NotificationCreate, NotificationEdit, NotificationList, NotificationShow } from './resources/notifications';
+import { PushTokenCreate, PushTokenEdit, PushTokenList, PushTokenShow } from './resources/pushTokens';
 
 
 function App() {
@@ -37,6 +39,9 @@ function App() {
     <Resource name="reports" list={ReportList} show={ReportShow} edit={ReportEdit} create={ReportCreate} icon={Flag} />
     <Resource name="chats" list={ChatList} show={ChatShow} icon={Forum} />
     <Resource name="messages" list={MessageList} show={MessageShow} edit={MessageEdit} create={MessageCreate} icon={Message} />
+    <Resource name="notifications" list={NotificationList} show={NotificationShow} edit={NotificationEdit} create={NotificationCreate} icon={Notifications} />
+    <Resource name="push_tokens" list={PushTokenList} show={PushTokenShow} edit={PushTokenEdit} create={PushTokenCreate} icon={Token} />
+    
   </Admin>
 }
 
