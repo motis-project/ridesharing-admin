@@ -12,8 +12,6 @@ import {
     Create,
     Show,
     SimpleShowLayout,
-    BooleanField,
-    BooleanInput,
 } from "react-admin";
 
 const notificationFilters = [
