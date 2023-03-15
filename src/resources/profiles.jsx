@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { 
     List, 
     TextField, 
@@ -13,12 +14,55 @@ import {
     FunctionField,
     Create,
     Show,
-    SimpleShowLayout
+    SimpleShowLayout,
+    Button,
+    TopToolbar,
+    EditButton,
+    Confirm,
+    useShowContext,
+    useRefresh,
 } from "react-admin";
+import { supabase } from '../supabase/supabase';
 
 const profileFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
+  
 ];
+const BlockUserButton = () => {
+  const { isLoading, record } = useShowContext();
+  const [open, setOpen] = useState(false);
+  const refresh = useRefresh();
+  if (isLoading) return null;
+  const userIsBlocked = record['is_blocked'];
+  const handleClick = () => setOpen(true);
+  const handleDialogClose = () => setOpen(false);
+  const handleConfirm = async () => {
+  const {error} = await supabase.rpc(userIsBlocked === true ? 'unblock_user' : 'block_user', { userid: record['auth_id'] })
+   if (error) console.log(error);
+    refresh();
+    setOpen(false);
+  };
+
+  return (
+      <>
+          <Button label= {userIsBlocked === true ? 'Unblock User' : 'Block User'} onClick={handleClick} />
+          <Confirm
+              isOpen={open}
+              title={userIsBlocked === true ? 'Unblock User' : 'Block User'}
+              content= {userIsBlocked === true ? 'Are you sure you want to unblock this user?' : 'Are you sure you want to block this user?'}
+              onConfirm={handleConfirm}
+              onClose={handleDialogClose}
+          />
+      </>
+  );
+};
+
+const ProfileShowActions = () => (
+  <TopToolbar>
+      <EditButton />
+      <BlockUserButton />
+  </TopToolbar>
+);
 
 const gender = [
   { id: 0, name: "male" },
@@ -33,12 +77,13 @@ export const ProfileList = () => (
       <TextField source="id" />
       <TextField source="username" />
       <EmailField source="email" />
+      <FunctionField label="blocked" render={record => record.is_blocked ? 'true' : 'false' } />
     </Datagrid>
   </List>
 );
 
 export const ProfileShow = () => (
-  <Show>
+  <Show actions={<ProfileShowActions />}>
     <SimpleShowLayout>
       <TextField source="id"  />
       <TextField source="auth_id"  />
@@ -48,6 +93,7 @@ export const ProfileShow = () => (
       <FunctionField label="Name" render={record => `${record.surname} ${record.name}`} />;
       <SelectField source="gender" choices={gender} />
       <TextField source="description" />
+      <FunctionField label="blocked" render={record => record.is_blocked ? 'true' : 'false' } />
     </SimpleShowLayout>
   </Show>
 );
