@@ -21,8 +21,12 @@ import {
     Confirm,
     useShowContext,
     useRefresh,
+    ReferenceManyField,
+    ReferenceField,
 } from "react-admin";
 import { supabase } from '../supabase/supabase';
+import { features } from './profileFeatures';
+import { reasons as report_reasons } from './reports';
 
 const profileFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
@@ -93,7 +97,19 @@ export const ProfileShow = () => (
       <FunctionField label="Name" render={record => `${record.first_name} ${record.last_name}`} />;
       <SelectField source="gender" choices={gender} />
       <TextField source="description" />
+      <ReferenceManyField label="Profile features" reference="profile_features" target="profile_id">
+        <Datagrid bulkActionButtons={false} >
+          <SelectField source="feature" choices={features} />
+        </Datagrid>
+      </ReferenceManyField>
       <FunctionField label="blocked" render={record => record.is_blocked ? 'true' : 'false' } />
+      <ReferenceManyField label="Reports received" reference="reports" target="offender_id">
+        <Datagrid rowClick="show">
+          <TextField source="text" />
+          <SelectField source="reason" choices={report_reasons} />
+          <ReferenceField source="reporter_id" reference="profiles" link="show" />
+        </Datagrid>
+      </ReferenceManyField>
     </SimpleShowLayout>
   </Show>
 );

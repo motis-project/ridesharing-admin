@@ -20,7 +20,7 @@ const profileFeatureFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
 ];
 
-const features = [
+export const features = [
   { id: 0, name: "noSmoking" },
   { id: 1, name: "smoking" },
   { id: 2, name: "noVaping" },

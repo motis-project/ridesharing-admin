@@ -34,23 +34,29 @@ const states = [
   { id: 5, name: 'cancelledByRider' },
   { id: 6, name: 'withdrawnByRider' },
 ];
+export const ride_states = states;
 
 export const RideList = () => (
   <List filters={rideFilters}>
-    <Datagrid rowClick="show">
-      <TextField source="id" />
-      <ReferenceField source="rider_id" reference="profiles" link="show" />
-      <ReferenceField source="drive_id" reference="drives" link="show" />
-      <ReferenceField source="chat_id" reference="chats" link="show" />
-      <TextField source="start" />
-      <DateField source="start_date_time" showTime />
-      <TextField source="destination" />
-      <DateField source="destination_date_time" showTime />
-      <BooleanField label="Soft delete" source="hide_in_list_view" />
-      <SelectField source="status" choices={states} />
-    </Datagrid>
+    <RideDataGrid />
   </List>
 );
+
+export const RideDataGrid = ( {empty} ) => (
+  <Datagrid rowClick="show" empty={empty}>
+    <TextField source="id" />
+    <ReferenceField source="rider_id" reference="profiles" link="show" />
+    <ReferenceField source="drive_id" reference="drives" link="show" />
+    <ReferenceField source="chat_id" reference="chats" link="show" />
+    <TextField source="start" />
+    <DateField source="start_date_time" showTime />
+    <TextField source="destination" />
+    <DateField source="destination_date_time" showTime />
+    <BooleanField label="Soft delete" source="hide_in_list_view" />
+    <SelectField source="status" choices={states} />
+  </Datagrid>
+);
+
 export const RideShow = () => (
   <Show>
     <SimpleShowLayout>

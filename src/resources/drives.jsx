@@ -17,8 +17,10 @@ import {
     Show,
     SimpleShowLayout,
     SelectField,
-    SelectInput
+    SelectInput,
+    ReferenceManyField
 } from "react-admin";
+import { RideDataGrid, RideList, ride_states } from "./rides";
 import { PositionInput } from "./util/position";
 
 const driveFilters = [
@@ -64,6 +66,9 @@ export const DriveShow = () => (
       <SelectField source="status" choices={states} />
       <BooleanField label="Soft delete" source="hide_in_list_view" />
       <NumberField source="seats" />
+      <ReferenceManyField label="Rides" reference="rides" target="drive_id">
+        <RideDataGrid empty="No rides"/>
+      </ReferenceManyField>
     </SimpleShowLayout>
   </Show>
 );

@@ -16,7 +16,7 @@ import {
     SimpleShowLayout
 } from "react-admin";
 
-const reasons = [
+export const reasons = [
     { id: 0, name: "didNotShowUp" },
     { id: 1, name: "didNotPay" },
     { id: 2, name: "didNotFollowRules" },
