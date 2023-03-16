@@ -67,7 +67,7 @@ const ProfileShowActions = () => (
 const gender = [
   { id: 0, name: "male" },
   { id: 1, name: "female" },
-  { id: 2, name: "divers" },
+  { id: 2, name: "diverse" },
   { id: null, name: "not specified" },
 ];
 
@@ -90,7 +90,7 @@ export const ProfileShow = () => (
       <DateField source="created_at" showTime />
       <TextField source="username" />
       <TextField source="email" />
-      <FunctionField label="Name" render={record => `${record.surname} ${record.name}`} />;
+      <FunctionField label="Name" render={record => `${record.first_name} ${record.last_name}`} />;
       <SelectField source="gender" choices={gender} />
       <TextField source="description" />
       <FunctionField label="blocked" render={record => record.is_blocked ? 'true' : 'false' } />
@@ -106,8 +106,8 @@ export const ProfileEdit = () => (
       <DateTimeInput source="created_at" disabled />
       <TextInput source="username" />
       <TextInput source="email" />
-      <TextInput source="surname" />
-      <TextInput source="name" />
+      <TextInput source="first_name" />
+      <TextInput source="last_name" />
       <RadioButtonGroupInput source="gender" choices={gender} />
       <TextInput source="description" />
     </SimpleForm>
@@ -120,8 +120,8 @@ export const ProfileCreate = () => (
       <TextInput source="auth_id" />
       <TextInput source="username" />
       <TextInput source="email" />
-      <TextInput source="surname" />
-      <TextInput source="name" />
+      <TextInput source="first_name" />
+      <TextInput source="last_name" />
       <RadioButtonGroupInput source="gender" choices={gender} />
       <TextInput source="description" />
     </SimpleForm>

@@ -212,8 +212,8 @@ const getResourceOptions = (
 
 const resources = {
     profiles: {
-        fields: ['id', 'auth_id','created_at', 'username', 'email', 'description', 'surname', 'name', 'gender'],
-        fullTextSearchFields: ['name', 'username', 'email', 'description', 'surname', 'name'],
+        fields: ['id', 'auth_id','created_at', 'username', 'email', 'description', 'first_name', 'last_name', 'gender'],
+        fullTextSearchFields: ['username', 'email', 'description', 'first_name', 'last_name'],
     },
     profile_features: {
         fields: ['id', 'created_at', 'profile_id', 'feature'],
@@ -224,12 +224,12 @@ const resources = {
         fullTextSearchFields: ['text', 'rating'],
     },
     drives: {
-        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'driver_id', 'cancelled', 'seats', 'hide_in_list_view'],
-        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'seats'],
+        fields: ['id', 'created_at', 'start_date_time', 'start_lat', 'start_lng', 'start', 'destination_date_time', 'destination_lat', 'destination_lng', 'destination', 'driver_id', 'status', 'seats', 'hide_in_list_view'],
+        fullTextSearchFields: ['start_date_time', 'start', 'destination_date_time', 'destination', 'status', 'seats'],
     },
     rides: {
-        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'end_time', 'end_lat', 'end_lng', 'end', 'rider_id', 'drive_id', 'chat_id', 'status', 'seats', 'hide_in_list_view'],
-        fullTextSearchFields: ['start_time', 'start', 'end_time', 'end', 'status', 'seats'],
+        fields: ['id', 'created_at', 'start_date_time', 'start_lat', 'start_lng', 'start', 'destination_date_time', 'destination_lat', 'destination_lng', 'destination', 'rider_id', 'drive_id', 'chat_id', 'status', 'seats', 'hide_in_list_view'],
+        fullTextSearchFields: ['start_date_time', 'start', 'destination_date_time', 'destination', 'status', 'seats'],
     },
     chats: {
         fields: ['id', 'created_at'],
@@ -239,8 +239,8 @@ const resources = {
         fullTextSearchFields: ['content'],
     },
     reports: {
-        fields: ['id', 'created_at', 'offender_id', 'reporter_id','category', 'text'],
-        fullTextSearchFields: ['category', 'text'],
+        fields: ['id', 'created_at', 'offender_id', 'reporter_id','reason', 'text'],
+        fullTextSearchFields: ['reason', 'text'],
     },
     push_tokens: {
         fields: ['id', 'created_at', 'user_id', 'token', 'disabled'],

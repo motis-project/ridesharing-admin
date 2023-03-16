@@ -15,12 +15,21 @@ import {
     Create,
     DateTimeInput,
     Show,
-    SimpleShowLayout
+    SimpleShowLayout,
+    SelectField,
+    SelectInput
 } from "react-admin";
 import { PositionInput } from "./util/position";
 
 const driveFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
+];
+
+const states = [
+  { id: 0, name: 'preview' },
+  { id: 1, name: 'plannedOrFinished' },
+  { id: 2, name: 'cancelledByRider' },
+  { id: 3, name: 'cancelledByRecurrenceRule' },
 ];
 
 export const DriveList = () => (
@@ -29,10 +38,10 @@ export const DriveList = () => (
       <TextField source="id" />
       <ReferenceField source="driver_id" reference="profiles" link="show" />
       <TextField source="start" />
-      <DateField source="start_time" showTime />
-      <TextField source="end" />
-      <DateField source="end_time" showTime />
-      <BooleanField source="cancelled" />
+      <DateField source="start_date_time" showTime />
+      <TextField source="destination" />
+      <DateField source="destination_date_time" showTime />
+      <SelectField source="status" choices={states} />
       <BooleanField label="Soft delete" source="hide_in_list_view" />
     </Datagrid>
   </List>
@@ -47,12 +56,12 @@ export const DriveShow = () => (
       <TextField source="start" />
       <NumberField source="start_lat" />
       <NumberField source="start_lng" />
-      <DateField source="start_time" showTime />
-      <TextField source="end" />
-      <NumberField source="end_lat" />
-      <NumberField source="end_lng" />
-      <DateField source="end_time" showTime />
-      <BooleanField source="cancelled" />
+      <DateField source="start_date_time" showTime />
+      <TextField source="destination" />
+      <NumberField source="destination_lat" />
+      <NumberField source="destination_lng" />
+      <DateField source="destination_date_time" showTime />
+      <SelectField source="status" choices={states} />
       <BooleanField label="Soft delete" source="hide_in_list_view" />
       <NumberField source="seats" />
     </SimpleShowLayout>
@@ -66,8 +75,8 @@ export const DriveEdit = () => (
       <DateTimeInput source="created_at" disabled />
       <ReferenceInput source="driver_id" reference="profiles" />
       <PositionInput source="start" />
-      <PositionInput source="end" />
-      <BooleanInput source="cancelled" />
+      <PositionInput source="destination" />
+      <SelectInput source="status" choices={states} />
       <BooleanInput label="Soft delete" source="hide_in_list_view" />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>
@@ -79,8 +88,8 @@ export const DriveCreate = () => (
     <SimpleForm>
       <ReferenceInput source="driver_id" reference="profiles" />
       <PositionInput source="start" />
-      <PositionInput source="end" />
-      <BooleanInput source="cancelled" />
+      <PositionInput source="destination" />
+      <SelectInput source="status" choices={states} />
       <BooleanInput label="Soft delete" source="hide_in_list_view" />
       <NumberInput source="seats" min={1} max={10} />
     </SimpleForm>

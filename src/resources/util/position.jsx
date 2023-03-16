@@ -6,7 +6,7 @@ export const PositionInput = ({ source }) => {
             <TextInput source={source} />
             <NumberInput source={source + "_lat"} step={0.01} />
             <NumberInput source={source + "_lng"} step={0.01} />
-            <DateTimeInput source={source + "_time"} />
+            <DateTimeInput source={source + "_date_time"} />
         </div>
     );
 };

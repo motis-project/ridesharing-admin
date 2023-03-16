@@ -16,7 +16,7 @@ import {
     SimpleShowLayout
 } from "react-admin";
 
-const categorys = [
+const reasons = [
     { id: 0, name: "didNotShowUp" },
     { id: 1, name: "didNotPay" },
     { id: 2, name: "didNotFollowRules" },
@@ -35,7 +35,7 @@ export const ReportList = () => (
       <TextField source="id" />
       <ReferenceField source="offender_id" reference="profiles" link="show" />
       <ReferenceField source="reporter_id" reference="profiles" link="show" />
-      <SelectField source="category" choices={categorys} />
+      <SelectField source="reason" choices={reasons} />
       <TextField source="text" />
     </Datagrid>
   </List>
@@ -48,7 +48,7 @@ export const ReportShow = () => (
       <DateField source="created_at" showTime />
       <ReferenceField source="offender_id" reference="profiles" link="show" />
       <ReferenceField source="reporter_id" reference="profiles" link="show" />
-      <SelectField source="category" choices={categorys} />
+      <SelectField source="reason" choices={reasons} />
       <TextField source="text" />
     </SimpleShowLayout>
   </Show>
@@ -61,7 +61,7 @@ export const ReportEdit = () => (
       <DateTimeInput source="created_at" disabled />
       <ReferenceInput source="offender_id" reference="profiles" />
       <ReferenceInput source="reporter_id" reference="profiles" />
-      <SelectInput source="category" choices={categorys} />
+      <SelectInput source="reason" choices={reasons} />
       <TextInput source="text" />
     </SimpleForm>
   </Edit>
@@ -72,7 +72,7 @@ export const ReportCreate = () => (
     <SimpleForm>
       <ReferenceInput source="offender_id" reference="profiles" />
       <ReferenceInput source="reporter_id" reference="profiles" />
-      <SelectInput source="category" choices={categorys} />
+      <SelectInput source="reason" choices={reasons} />
       <TextInput source="text" />
     </SimpleForm>
   </Create>

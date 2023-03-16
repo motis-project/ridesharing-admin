@@ -43,9 +43,9 @@ export const RideList = () => (
       <ReferenceField source="drive_id" reference="drives" link="show" />
       <ReferenceField source="chat_id" reference="chats" link="show" />
       <TextField source="start" />
-      <DateField source="start_time" showTime />
-      <TextField source="end" />
-      <DateField source="end_time" showTime />
+      <DateField source="start_date_time" showTime />
+      <TextField source="destination" />
+      <DateField source="destination_date_time" showTime />
       <BooleanField label="Soft delete" source="hide_in_list_view" />
       <SelectField source="status" choices={states} />
     </Datagrid>
@@ -62,11 +62,11 @@ export const RideShow = () => (
       <TextField source="start" />
       <NumberField source="start_lat" />
       <NumberField source="start_lng" />
-      <DateField source="start_time" showTime />
-      <TextField source="end" />
-      <NumberField source="end_lat" />
-      <NumberField source="end_lng" />
-      <DateField source="end_time" showTime />
+      <DateField source="start_date_time" showTime />
+      <TextField source="destination" />
+      <NumberField source="destination_lat" />
+      <NumberField source="destination_lng" />
+      <DateField source="destination_date_time" showTime />
       <SelectField source="status" choices={states} />
       <BooleanField label="Soft delete" source="hide_in_list_view" />
       <NumberField source="seats" />
@@ -82,7 +82,7 @@ export const RideEdit = () => (
       <ReferenceInput source="rider_id" reference="profiles" />
       <ReferenceInput source="drive_id" reference="drives" />
       <PositionInput source="start" />
-      <PositionInput source="end" />
+      <PositionInput source="destination" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
       <BooleanInput label="Soft delete" source="hide_in_list_view" />
@@ -96,7 +96,7 @@ export const RideCreate = () => (
       <ReferenceInput source="rider_id" reference="profiles" />
       <ReferenceInput source="drive_id" reference="drives" />
       <PositionInput source="start" />
-      <PositionInput source="end" />
+      <PositionInput source="destination" />
       <SelectInput source="status" choices={states} />
       <NumberInput source="seats" min={1} max={10} />
       <BooleanInput label="Soft delete" source="hide_in_list_view" />
