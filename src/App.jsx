@@ -9,7 +9,7 @@ import MyLayout from './MyLayout';
 import { i18nProvider } from './supabase/i18nProvider';
 import { ProfileList, ProfileEdit, ProfileCreate, ProfileShow } from './resources/profiles';
 import { DriveEdit, DriveList, DriveCreate, DriveShow } from './resources/drives';
-import { Chair, DirectionsCar, Group, Message, Reviews, Rule, Flag, Forum, Token, Notifications } from '@mui/icons-material';
+import { Chair, DirectionsCar, Group, Message, Reviews, Rule, Flag, Forum, Token, Notifications, Repeat } from '@mui/icons-material';
 import { RideCreate, RideEdit, RideList, RideShow } from './resources/rides';
 import { ProfileFeatureCreate, ProfileFeatureEdit, ProfileFeatureList, ProfileFeatureShow } from './resources/profileFeatures';
 import { ReviewCreate, ReviewEdit, ReviewList, ReviewShow } from './resources/reviews';
@@ -18,6 +18,7 @@ import { ReportCreate, ReportEdit, ReportList, ReportShow } from './resources/re
 import { ChatList, ChatShow } from './resources/chats';
 import { NotificationCreate, NotificationEdit, NotificationList, NotificationShow } from './resources/notifications';
 import { PushTokenCreate, PushTokenEdit, PushTokenList, PushTokenShow } from './resources/pushTokens';
+import { RecurringDriveCreate, RecurringDriveEdit, RecurringDriveList, RecurringDriveShow } from './resources/recurring_drives';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     </CustomRoutes>
     <Resource name="profiles" list={ProfileList} show={ProfileShow} edit={ProfileEdit} create={ProfileCreate} icon={Group} recordRepresentation={(record) => `${record.email}`} />
     <Resource name="drives" list={DriveList} show={DriveShow} edit={DriveEdit} create={DriveCreate} icon={DirectionsCar} />
+    <Resource name="recurring_drives" list={RecurringDriveList} show={RecurringDriveShow} edit={RecurringDriveEdit} create={RecurringDriveCreate} icon={Repeat} />
     <Resource name="rides" list={RideList} show={RideShow} edit={RideEdit} create={RideCreate} icon={Chair} />
     <Resource name="profile_features" show={ProfileFeatureShow} list={ProfileFeatureList} edit={ProfileFeatureEdit} create={ProfileFeatureCreate} icon={Rule} />
     <Resource name="reviews" list={ReviewList} show={ReviewShow} edit={ReviewEdit} create={ReviewCreate} icon={Reviews} />

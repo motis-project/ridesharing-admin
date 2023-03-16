@@ -223,6 +223,10 @@ const resources = {
         fields: ['id', 'created_at', 'text','writer_id', 'receiver_id', 'rating', 'comfort_rating', 'safety_rating', 'reliability_rating', 'hospitality_rating'],
         fullTextSearchFields: ['text', 'rating'],
     },
+    recurring_drives: {
+        fields: ['id', 'created_at', 'start_time', 'start_lat', 'start_lng', 'start', 'destination_time', 'destination_lat', 'destination_lng', 'destination', 'driver_id', 'seats', 'recurrence_rule', 'stopped_at'],
+        fullTextSearchFields: ['start_time', 'start', 'destination_time', 'destination', 'seats'],
+    },
     drives: {
         fields: ['id', 'created_at', 'start_date_time', 'start_lat', 'start_lng', 'start', 'destination_date_time', 'destination_lat', 'destination_lng', 'destination', 'driver_id', 'status', 'seats', 'hide_in_list_view'],
         fullTextSearchFields: ['start_date_time', 'start', 'destination_date_time', 'destination', 'status', 'seats'],
