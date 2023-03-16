@@ -20,7 +20,7 @@ import {
     SelectInput,
     ReferenceManyField
 } from "react-admin";
-import { RideDataGrid, RideList, ride_states } from "./rides";
+import { RideDataGrid } from "./rides";
 import { PositionInput } from "./util/position";
 
 const driveFilters = [
@@ -36,17 +36,21 @@ const states = [
 
 export const DriveList = () => (
   <List filters={driveFilters}>
-    <Datagrid rowClick="show">
-      <TextField source="id" />
-      <ReferenceField source="driver_id" reference="profiles" link="show" />
-      <TextField source="start" />
-      <DateField source="start_date_time" showTime />
-      <TextField source="destination" />
-      <DateField source="destination_date_time" showTime />
-      <SelectField source="status" choices={states} />
-      <BooleanField label="Soft delete" source="hide_in_list_view" />
-    </Datagrid>
+    <DriveDataGrid/>
   </List>
+);
+
+export const DriveDataGrid = ( ) => (
+  <Datagrid rowClick="show" empty="No drives">
+    <TextField source="id" />
+    <ReferenceField source="driver_id" reference="profiles" link="show" />
+    <TextField source="start" />
+    <DateField source="start_date_time" showTime />
+    <TextField source="destination" />
+    <DateField source="destination_date_time" showTime />
+    <SelectField source="status" choices={states} />
+    <BooleanField label="Soft delete" source="hide_in_list_view" />
+  </Datagrid>
 );
 
 export const DriveShow = () => (
